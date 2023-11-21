@@ -1,4 +1,4 @@
-import React from 'react';
+
 import './Hader.css'
 import logo from '../../imagess/images.jpeg';
 const Hader = () => {
