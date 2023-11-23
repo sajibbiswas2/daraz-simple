@@ -4,6 +4,7 @@ import './Shop.css';
 import { useEffect } from 'react';
 import Product from '../Product/Product';
 import Cart from '../Cart/Cart';
+import { addToDb, getShoppingCart } from '../../utlitis/fakdb';
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
@@ -13,10 +14,15 @@ const Shop = () => {
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
+
+    useEffect(() => {
+        const storedCart = getShoppingCart();
+        console.log(storedCart)
+    })
     const handeladdtocart = (product) => {
         const newcart = [...cart, product]
         setCart(newcart)
-        console.log(product)
+        addToDb(product.id)
     }
 
 
@@ -28,8 +34,6 @@ const Shop = () => {
                         <Product key={product.id}
                             product={product}
                             handeladdtocart={handeladdtocart}
-
-
                         ></Product>)
                 }
             </div>
