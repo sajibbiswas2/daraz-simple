@@ -3,6 +3,7 @@ import { useState } from 'react';
 import './Shop.css';
 import { useEffect } from 'react';
 import Product from '../Product/Product';
+import Cart from '../Cart/Cart';
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
@@ -32,9 +33,8 @@ const Shop = () => {
                         ></Product>)
                 }
             </div>
-            <div>
-                <h2>storeg container</h2>
-                <p>set to card item:{cart.length}</p>
+            <div className="cart-container">
+                <Cart cart={cart}></Cart>
             </div>
         </div>
     );
